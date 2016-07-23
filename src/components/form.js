@@ -4,24 +4,26 @@ const Form = React.createClass({
 
     getInitialState() {
         return {
-            body: this.props.body || '11111',
-            title: this.props.title || '2222'
+            title: this.props.title || 'my title',
+            body: this.props.body || 'some body'
         }
     },
 
-    componentWillReceiveProps(props) {
-        this.setState(props);
+    componentWillReceiveProps(newProps) {
+        console.log('got new props', newProps);
+        this.setState(newProps);
+    },
+
+    handleTitleChange(e) {
+        console.log('e handle title change', e);
+        this.setState({
+            title: e.target.value
+        });
     },
 
     handleBodyChange(e) {
         this.setState({
             body: e.target.value
-        });
-    },
-
-    handleTitleChange(e) {
-        this.setState({
-            title: e.target.value
         });
     },
 
@@ -31,7 +33,11 @@ const Form = React.createClass({
     },
 
     render() {
-        return (
+
+        console.log('form rendered', this.props);
+        console.log('form rendered - state', this.state);
+
+        return(
             <form name="blog_post" className="form-horizontal" onSubmit={this.handleSubmit}>
                 <div id="blog_post">
                     <div className="form-group">
@@ -39,9 +45,9 @@ const Form = React.createClass({
                         <div className="col-sm-10">
                             <input type="text"
                                    id="blog_post_title"
-                                   required="required"
                                    value={this.state.title}
                                    onChange={this.handleTitleChange}
+                                   required="required"
                                    className="form-control"/>
                         </div>
                     </div>
@@ -50,9 +56,9 @@ const Form = React.createClass({
                         <div className="col-sm-10">
                             <input type="text"
                                    id="blog_post_body"
-                                   required="required"
                                    value={this.state.body}
                                    onChange={this.handleBodyChange}
+                                   required="required"
                                    className="form-control"/>
                         </div>
                     </div>
@@ -70,6 +76,7 @@ const Form = React.createClass({
             </form>
         );
     }
+
 });
 
 export default Form;

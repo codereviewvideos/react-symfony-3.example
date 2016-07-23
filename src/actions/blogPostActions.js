@@ -1,11 +1,33 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchBlogPosts() {
-    return fetch('http://api.symfony-3.dev/app_dev.php/posts', {
+export function fetchBlogPosts(page, limit, filter, sort, direction) {
+    let p = new URLSearchParams();
+    p.append('page', page || 1);
+    p.append('limit', limit || 0);
+    p.append('filter', filter || '');
+    p.append('sort', sort || '');
+    p.append('direction', direction || '');
+
+    console.log('http://api.symfony-3.dev/app_dev.php/posts?', 'http://api.symfony-3.dev/app_dev.php/posts?' + p);
+    return fetch('http://api.symfony-3.dev/app_dev.php/posts?' + p, {
         method: 'GET',
         mode: 'CORS'
     }).then(res => res.json())
     .catch(err => err);
+}
+
+function getAll(page, offset, filter, sort, direction) {
+    return $http({
+        url: ROOT_URL,
+        method: 'GET',
+        params: {
+            page: page || 1,
+            limit: offset || 10,
+            filter: filter || '',
+            sort: sort || '',
+            direction: direction || ''
+        }
+    });
 }
 
 export function fetchBlogPost(id) {
@@ -13,7 +35,7 @@ export function fetchBlogPost(id) {
         method: 'GET',
         mode: 'CORS'
     }).then(res => res.json())
-    .catch(err => err);
+        .catch(err => err);
 }
 
 export function createBlogPost(data) {
@@ -46,8 +68,7 @@ export function deleteBlogPost(id) {
     return fetch('http://api.symfony-3.dev/app_dev.php/posts/' + id, {
         method: 'DELETE',
         mode: 'CORS'
-    }).then(res => {
-        return res;
-    }).catch(err => err);
+    }).then(res => res)
+        .catch(err => err);
 }
 
