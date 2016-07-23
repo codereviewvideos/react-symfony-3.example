@@ -1,6 +1,6 @@
-## Simple CRUD with React 0.14.6, Symfony 3, FOSRESTBundle
+## Simple CRUD with React 15.2.1, Symfony 3, FOSRESTBundle
 
-This is an example of a very basic CRUD API using React 0.14.6 to talk to Symfony 3 and FOSRESTBundle.
+This is an example of a very basic CRUD API using React 15.2.1 to talk to Symfony 3 and FOSRESTBundle.
 
 This is the React code to talk to the API made during the second set of videos [of this course][1].
 
@@ -11,7 +11,7 @@ mobile app frameworks like Ionic, or desktop frameworks such as Electron.
 If you haven't already seen it, check out the [Twig version of this API][2], where everything is a little more static,
 but also much more visual and easy to follow along if new to Symfony 3.
 
-The code in this repository is a simple React 0.14.6 implementation of a CRUD app to talk to a Symfony 3 REST API.
+The code in this repository is a simple React 15.2.1 implementation of a CRUD app to talk to a Symfony 3 REST API.
 
 This project was based on the [React Hot Boilerplate][4] by gaearon / Dan Abramov.
 
