@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
-import Form from '../../components/form';
-import { createBlogPost } from '../../actions/blogPostActions';
+import Form from '../components/form';
+import { createBlogPost } from '../actions/blogPostActions';
 
 export default class Create extends Component {
 
     handleSubmit(data) {
-        createBlogPost(data);
-        this.props.router.push('/').bind(this);
+        createBlogPost(data)
+        .then(res => {
+            this.props.router.push("/").bind(this);
+        });
     }
 
     render() {
@@ -17,4 +18,5 @@ export default class Create extends Component {
             </div>
         );
     }
+
 }
