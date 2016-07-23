@@ -27,7 +27,7 @@ export default class Table extends Component {
 
                     {this.props.blogPosts && this.props.blogPosts.map((post, i) => {
                         return (
-                            <tr key={i}>
+                            <tr key={post.id}>
                                 <td>{post.id}</td>
                                 <td>{post.title}</td>
                                 <td>
