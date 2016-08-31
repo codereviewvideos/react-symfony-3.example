@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 export function fetchBlogPosts(page, limit, filter, sort, direction) {
     let p = new URLSearchParams();
     p.append('page', page || 1);
-    p.append('limit', limit || 0);
+    p.append('limit', limit || 10);
     p.append('filter', filter || '');
     p.append('sort', sort || '');
     p.append('direction', direction || '');
